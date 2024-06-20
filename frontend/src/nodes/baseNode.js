@@ -11,7 +11,7 @@ export const BaseNode = ({ id, data, label, handles, inputs, description }) => {
             [field]: e.target.value,
         });
     };
-    console.log('fields', fields)
+
     return (
         <div style={{ width: 200, height: 'auto', border: '1px solid black', padding: '10px' }}>
             <div>
