@@ -6,7 +6,7 @@ export const TextNode = ({ id, data }) => {
 
   data = {
     ...data,
-    id: data?.text || '{{input}}',
+    text: data?.text || '{{input}}',
   };
 
   const handles = [
