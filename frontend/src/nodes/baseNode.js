@@ -1,9 +1,7 @@
 // src/nodes/BaseNode.js
-import { useState } from 'react';
 import { Handle } from 'reactflow';
 
-export const BaseNode = ({ id, data, label, handles, inputs, description }) => {
-    const [fields, setFields] = useState(data || {});
+export const BaseNode = ({ id, fields, setFields, label, handles, inputs, description }) => {
 
     const handleChange = (field) => (e) => {
         setFields({
