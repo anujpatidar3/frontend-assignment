@@ -3,6 +3,7 @@ import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState } from 'react';
 import { NODEOPTIONS } from '../constants/nodes.js';
+import { outputStyle as style } from './styles.js';
 
 export const OutputNode = ({ id, data }) => {
   data = {
@@ -19,12 +20,8 @@ export const OutputNode = ({ id, data }) => {
     { label: 'Name: ', field: 'outputName', type: NODEOPTIONS.TEXT },
     { label: 'Type: ', field: 'outputType', type: NODEOPTIONS.SELECT, options: ['Text', 'File'] },
   ];
-  const [fields, setFields] = useState(data);
 
-  const style = {
-    backgroundColor: '#C8CFA0',
-    border: '4px solid #C8CFA0'
-  }
+  const [fields, setFields] = useState(data);
 
   return (
     <BaseNode

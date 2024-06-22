@@ -3,6 +3,7 @@ import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState, useRef, useEffect } from 'react';
 import { NODEOPTIONS } from '../constants/nodes.js';
+import { textStyle as style } from './styles.js';
 
 export const TextNode = ({ id, data }) => {
 
@@ -14,11 +15,6 @@ export const TextNode = ({ id, data }) => {
   const inputs = [
     { label: 'Text: ', field: 'text', type: NODEOPTIONS.TEXTAREA },
   ];
-
-  const style = {
-    backgroundColor: '#78ABA8',
-    border: '4px solid #78ABA8'
-  }
 
   const [fields, setFields] = useState(data);
 
@@ -63,7 +59,7 @@ export const TextNode = ({ id, data }) => {
     const newHandles = variables.map((variable, index) => ({
       type: 'target',
       position: Position.Left,
-      id: `${id}-output-${index}-${variable}-asdfadsf`,
+      id: `${id}-output-${index}-${variable}`,
       style: { top: `${stepSize * (index + 1)}%` }
     }));
     setHandles([{ type: 'source', position: Position.Right, id: `${id}-output` }

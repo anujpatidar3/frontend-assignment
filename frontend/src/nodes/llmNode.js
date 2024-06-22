@@ -2,6 +2,8 @@
 import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState } from 'react';
+import { llmStyle as style } from './styles.js';
+import { LLMDescription } from '../constants/nodes.js';
 
 export const LLMNode = ({ id, data }) => {
   const handles = [
@@ -11,12 +13,6 @@ export const LLMNode = ({ id, data }) => {
   ];
   const [fields, setFields] = useState(data);
 
-  const style = {
-    backgroundColor: '#FCDC94',
-    border: '4px solid #FCDC94'
-  }
-
-  const description = "This is a LLM."
   return (
     <BaseNode
       id={id}
@@ -25,7 +21,7 @@ export const LLMNode = ({ id, data }) => {
       handles={handles}
       fields={fields}
       setFields={setFields}
-      description={description}
+      description={LLMDescription}
       style={style}
     />
   );

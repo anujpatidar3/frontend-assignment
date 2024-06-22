@@ -3,6 +3,7 @@ import { BaseNode } from './components/baseNode/baseNode';
 import { Position } from 'reactflow';
 import { useState } from 'react';
 import { NODEOPTIONS } from '../constants/nodes';
+import { inputStyle as style } from './styles.js';
 
 export const InputNode = ({ id, data }) => {
   data = {
@@ -20,12 +21,7 @@ export const InputNode = ({ id, data }) => {
     { label: 'Type: ', field: 'inputType', type: NODEOPTIONS.SELECT, options: ['Text', 'File'] },
   ];
   const [fields, setFields] = useState(data);
-
-  const style = {
-    backgroundColor: '#EF9C66',
-    border: '4px solid #EF9C66'
-  }
-
+  
   return (
     <BaseNode
       id={id}

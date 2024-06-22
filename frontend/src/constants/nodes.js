@@ -3,3 +3,5 @@ export const NODEOPTIONS = Object.freeze({
     TEXTAREA: 'textarea',
     SELECT: 'select'
 });
+
+export const LLMDescription = "This is a LLM."
