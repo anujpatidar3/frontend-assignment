@@ -2,7 +2,7 @@
 import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState } from 'react';
-import { NODEOPTIONS } from '../constants/nodes.js';
+import { HANDLEOPTIONS, NODEOPTIONS } from '../constants/nodes.js';
 import { outputStyle as style } from './styles.js';
 
 export const OutputNode = ({ id, data }) => {
@@ -13,7 +13,7 @@ export const OutputNode = ({ id, data }) => {
   };
 
   const handles = [
-    { type: 'target', position: Position.Left, id: `${id}-value` },
+    { type: HANDLEOPTIONS.TARGET, position: Position.Left, id: `${id}-value` },
   ];
 
   const inputs = [

@@ -2,7 +2,7 @@
 import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState, useRef, useEffect } from 'react';
-import { NODEOPTIONS } from '../constants/nodes.js';
+import { HANDLEOPTIONS, NODEOPTIONS } from '../constants/nodes.js';
 import { textStyle as style } from './styles.js';
 
 export const TextNode = ({ id, data }) => {
@@ -37,8 +37,8 @@ export const TextNode = ({ id, data }) => {
     updateNodeSize();
   }, [fields.text, fields.text.length]);
 
-   
-  const [handles, setHandles] = useState([{ type: 'source', position: Position.Right, id: `${id}-output` }]);
+
+  const [handles, setHandles] = useState([{ type: HANDLEOPTIONS.SOURCE, position: Position.Right, id: `${id}-output` }]);
 
   const [variableCount, setVariableCount] = useState(0);
 
@@ -57,13 +57,14 @@ export const TextNode = ({ id, data }) => {
     const variables = extractVariables(fields.text);
     const stepSize = variables.length > 1 ? 100 / (variables.length + 1) : 50;
     const newHandles = variables.map((variable, index) => ({
-      type: 'target',
+      type: HANDLEOPTIONS.TARGET,
       position: Position.Left,
       id: `${id}-output-${index}-${variable}`,
       style: { top: `${stepSize * (index + 1)}%` }
     }));
-    setHandles([{ type: 'source', position: Position.Right, id: `${id}-output` }
+    setHandles([{ type: HANDLEOPTIONS.SOURCE, position: Position.Right, id: `${id}-output` }
       , ...newHandles])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variableCount]);
 
   return (

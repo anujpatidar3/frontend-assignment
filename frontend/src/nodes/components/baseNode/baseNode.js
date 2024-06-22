@@ -1,6 +1,13 @@
 // src/nodes/BaseNode.js
 import { Handle } from 'reactflow';
-import { inputContainerStyle, descriptionStyle, containerStyle as baseContainerStyle, labelStyle as baseLabelStyle } from '../styles.js'
+import { 
+    inputContainerStyle, 
+    descriptionStyle, 
+    containerStyle as baseContainerStyle, 
+    labelStyle as baseLabelStyle,
+    textStyle,
+    selectStyle
+} from './styles.js'
 import { NODEOPTIONS } from '../../../constants/nodes.js';
 
 export const BaseNode = ({
@@ -50,12 +57,7 @@ export const BaseNode = ({
                         {type === NODEOPTIONS.TEXT && (
                             <input
                                 type="text"
-                                style={{
-                                    padding: "4px",
-                                    fontSize: "1em",
-                                    border: "1px solid",
-                                    borderRadius: "4px",
-                                }}
+                                style={textStyle}
                                 className='input-text'
                                 value={fields[field] || ""}
                                 onChange={handleChange(field)}
@@ -70,7 +72,7 @@ export const BaseNode = ({
                                 style={{
                                     width: "100%",
                                     boxSizing: "border-box",
-                                    height: `${Math.max(nodeSize.height - 40, 40)}` + "px",
+                                    height: `${Math.max(nodeSize.height - 40, 40)}px`,
                                 }}
                             />
                         )}
@@ -78,13 +80,7 @@ export const BaseNode = ({
                             <select
                                 value={fields[field] || ""}
                                 onChange={handleChange(field)}
-                                style={{
-                                    width: "150px",
-                                    padding: "4px",
-                                    fontSize: "1em",
-                                    border: "1px solid",
-                                    borderRadius: "4px",
-                                }}
+                                style={selectStyle}
                             >
                                 {options.map((option) => (
                                     <option key={option} value={option}>

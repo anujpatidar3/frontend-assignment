@@ -2,7 +2,7 @@
 import { BaseNode } from './components/baseNode/baseNode';
 import { Position } from 'reactflow';
 import { useState } from 'react';
-import { NODEOPTIONS } from '../constants/nodes';
+import { HANDLEOPTIONS, NODEOPTIONS } from '../constants/nodes';
 import { inputStyle as style } from './styles.js';
 
 export const InputNode = ({ id, data }) => {
@@ -13,7 +13,7 @@ export const InputNode = ({ id, data }) => {
   };
 
   const handles = [
-    { type: 'source', position: Position.Right, id: `${id}-value` },
+    { type: HANDLEOPTIONS.SOURCE, position: Position.Right, id: `${id}-value` },
   ];
 
   const inputs = [
@@ -21,7 +21,7 @@ export const InputNode = ({ id, data }) => {
     { label: 'Type: ', field: 'inputType', type: NODEOPTIONS.SELECT, options: ['Text', 'File'] },
   ];
   const [fields, setFields] = useState(data);
-  
+
   return (
     <BaseNode
       id={id}

@@ -23,3 +23,18 @@ export const containerStyle = {
     height: "auto",
     borderRadius: "5px"
 }
+
+export const textStyle = {
+    padding: "4px",
+    fontSize: "1em",
+    border: "1px solid",
+    borderRadius: "4px",
+}
+
+export const selectStyle = {
+    width: "150px",
+    padding: "4px",
+    fontSize: "1em",
+    border: "1px solid",
+    borderRadius: "4px",
+}
