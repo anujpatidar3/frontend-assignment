@@ -1,7 +1,7 @@
 // src/nodes/BaseNode.js
 import { Handle } from 'reactflow';
-import { inputContainerStyle, descriptionStyle, containerStyle as baseContainerStyle, labelStyle as baseLabelStyle } from './styles.js'
-import { NODEOPTIONS } from '../../constants/nodes.js';
+import { inputContainerStyle, descriptionStyle, containerStyle as baseContainerStyle, labelStyle as baseLabelStyle } from '../styles.js'
+import { NODEOPTIONS } from '../../../constants/nodes.js';
 
 export const BaseNode = ({
     id,
@@ -103,6 +103,7 @@ export const BaseNode = ({
                     position={position}
                     id={id}
                     style={style}
+                    isConnectable={true}
                 />
             ))}
         </div>

@@ -1,5 +1,5 @@
 // textNode.js
-import { BaseNode } from './components/baseNode.js';
+import { BaseNode } from './components/baseNode/baseNode.js';
 import { Position } from 'reactflow';
 import { useState, useRef, useEffect } from 'react';
 import { NODEOPTIONS } from '../constants/nodes.js';
@@ -10,10 +10,6 @@ export const TextNode = ({ id, data }) => {
     ...data,
     text: data?.text || '{{input}}',
   };
-
-  const handles = [
-    { type: 'source', position: Position.Right, id: `${id}-output` },
-  ];
 
   const inputs = [
     { label: 'Text: ', field: 'text', type: NODEOPTIONS.TEXTAREA },
@@ -44,6 +40,35 @@ export const TextNode = ({ id, data }) => {
   useEffect(() => {
     updateNodeSize();
   }, [fields.text, fields.text.length]);
+
+   
+  const [handles, setHandles] = useState([{ type: 'source', position: Position.Right, id: `${id}-output` }]);
+
+  const [variableCount, setVariableCount] = useState(0);
+
+  const extractVariables = (input) => {
+    const regex = /{{\s*([^}]+)\s*}}/g;
+    const matches = [...input.matchAll(regex)];
+    return matches.map(match => match[1].trim());
+  };
+
+  useEffect(() => {
+    const variables = extractVariables(fields.text);
+    setVariableCount(variables.length);
+  }, [fields.text]);
+
+  useEffect(() => {
+    const variables = extractVariables(fields.text);
+    const stepSize = variables.length > 1 ? 100 / (variables.length + 1) : 50;
+    const newHandles = variables.map((variable, index) => ({
+      type: 'target',
+      position: Position.Left,
+      id: `${id}-output-${index}-${variable}-asdfadsf`,
+      style: { top: `${stepSize * (index + 1)}%` }
+    }));
+    setHandles([{ type: 'source', position: Position.Right, id: `${id}-output` }
+      , ...newHandles])
+  }, [variableCount]);
 
   return (
     <BaseNode
