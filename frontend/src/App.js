@@ -1,6 +1,6 @@
-import { PipelineToolbar } from './toolbar';
+import { PipelineToolbar } from './components/Toolbar/toolbar';
 import { PipelineUI } from './ui';
-import { SubmitButton } from './components/submitButton/button';
+import { SubmitButton } from './components/SubmitButton/button';
 
 function App() {
   return (

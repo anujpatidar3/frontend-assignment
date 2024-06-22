@@ -1,6 +1,6 @@
 import { useStore } from '../../store';
 import submitData from '../../apis/submit';
-import { SnackbarComponent } from '../snackbar/snackbar';
+import { SnackbarComponent } from '../Snackbar/snackbar';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
