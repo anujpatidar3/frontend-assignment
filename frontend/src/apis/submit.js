@@ -16,14 +16,14 @@ async function submitData (pipelineData) {
         const { num_nodes, num_edges, is_dag } = result;
 
         // Display the result in an alert
-        alert(`Pipeline Analysis Result:
+        return `Pipeline Analysis Result:
         - Number of Nodes: ${num_nodes}
         - Number of Edges: ${num_edges}
-        - Is DAG: ${is_dag ? 'Yes' : 'No'}`);
+        - Is DAG: ${is_dag ? 'Yes' : 'No'}`;
 
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        alert('There was an error processing the pipeline. Please try again.');
+        return 'There was an error processing the pipeline. Please try again.';
     }
 }
 
