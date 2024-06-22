@@ -7,16 +7,17 @@ import {
   faFileExport,
   faAlignLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { NODETYPES } from "./constants/nodes";
 
 const getIcon = (type) => {
   switch (type) {
-    case "customInput":
+    case NODETYPES.CUSTOMINPUT:
       return faKeyboard;
-    case "llm":
+    case NODETYPES.LLM:
       return faRobot;
-    case "customOutput":
+    case NODETYPES.CUSTOMOUTPUT:
       return faFileExport;
-    case "text":
+    case NODETYPES.TEXT:
       return faAlignLeft;
     default:
       return null;
@@ -38,7 +39,6 @@ export const DraggableNode = ({ type, label }) => {
 
   const buttonStyle = {
     cursor: "grab",
-    // width: "48%", // Adjusted to fit the parent container
     border: "1px solid #658147",
     padding: "10px",
     borderRadius: "4px",
@@ -50,11 +50,11 @@ export const DraggableNode = ({ type, label }) => {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    transition: "all 0.3s ease", // Smooth transition for hover effect
+    transition: "all 0.3s ease",
   };
 
   const iconStyle = {
-    marginRight: "10px", // Space between the icon and the label
+    marginRight: "10px",
     fontSize: "20px",
   };
 

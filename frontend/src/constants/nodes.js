@@ -10,3 +10,10 @@ export const HANDLEOPTIONS = Object.freeze({
     SOURCE: 'source',
     TARGET: 'target'
 });
+
+export const NODETYPES = Object.freeze({
+    CUSTOMINPUT: 'customInput',
+    LLM: 'llm',
+    CUSTOMOUTPUT: 'customOutput',
+    TEXT: 'text'
+})

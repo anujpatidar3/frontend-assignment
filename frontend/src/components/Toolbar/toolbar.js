@@ -1,5 +1,6 @@
 // toolbar.js
 
+import { NODETYPES } from '../../constants/nodes';
 import { DraggableNode } from '../../draggableNode';
 import { sidebarStyle, buttonRowStyle, HeadingStyle } from './styles'
 
@@ -8,16 +9,16 @@ export const PipelineToolbar = () => {
         <div style={sidebarStyle}>
             <div style={HeadingStyle}> VectorShift </div>
             <div style={buttonRowStyle}>
-                <DraggableNode type="customInput" label="Input" />
+                <DraggableNode type={NODETYPES.CUSTOMINPUT} label="Input" />
             </div>
             <div style={buttonRowStyle}>
-                <DraggableNode type="llm" label="LLM" />
+                <DraggableNode type={NODETYPES.LLM} label="LLM" />
             </div>
             <div style={buttonRowStyle}>
-                <DraggableNode type="customOutput" label="Output" />
+                <DraggableNode type={NODETYPES.CUSTOMOUTPUT} label="Output" />
             </div>
             <div style={buttonRowStyle}>
-                <DraggableNode type="text" label="Text" />
+                <DraggableNode type={NODETYPES.TEXT} label="Text" />
             </div>
         </div>
     );
