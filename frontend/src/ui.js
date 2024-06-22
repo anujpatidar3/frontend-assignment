@@ -106,7 +106,7 @@ export const PipelineUI = () => {
                 connectionLineType='smoothstep'
             >
                 <Background color="#aaa" gap={gridSize} />
-                <Controls />
+                <Controls position="top-right"/>
                 <MiniMap />
             </ReactFlow>
         </div>
