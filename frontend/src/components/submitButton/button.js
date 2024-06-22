@@ -20,20 +20,30 @@ export const SubmitButton = () => {
     const edges = useStore((state) => state.edges);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [isSuccess, setIsSuccess] = useState(true)
 
     const handleSubmit = async () => {
         const pipelineData = {
             nodes: nodes.map(node => ({ id: node.id })),
             edges: edges.map(edge => ({ source: edge.source, target: edge.target }))
         };
+        if (!nodes.length) {
+            setSnackbarMessage("Please create a Node");
+            setSnackbarOpen(true);
+            setIsSuccess(false)
+            return
+        }
+
         try {
             const resultMessage = await submitData(pipelineData);
             setSnackbarMessage(resultMessage);
             setSnackbarOpen(true);
+            setIsSuccess(true)
         } catch (error) {
             console.error('Error submitting data:', error);
             setSnackbarMessage('There was an error processing the pipeline. Please try again.');
             setSnackbarOpen(true);
+            setIsSuccess(false)
         }
     };
 
@@ -57,6 +67,7 @@ export const SubmitButton = () => {
                 open={snackbarOpen}
                 onClose={handleSnackbarClose}
                 message={snackbarMessage}
+                success={isSuccess}
             />
         </div>
     );
