@@ -1,6 +1,7 @@
 // src/nodes/BaseNode.js
 import { Handle } from 'reactflow';
 import { inputContainerStyle, descriptionStyle, containerStyle as baseContainerStyle, labelStyle as baseLabelStyle } from './styles.js'
+import { NODEOPTIONS } from '../../constants/nodes.js';
 
 export const BaseNode = ({
     id,
@@ -46,7 +47,7 @@ export const BaseNode = ({
                 <div key={field} style={inputContainerStyle}>
                     <label style={{ fontWeight: 600, fontSize: "1em" }}>
                         {label}
-                        {type === "text" && (
+                        {type === NODEOPTIONS.TEXT && (
                             <input
                                 type="text"
                                 style={{
@@ -60,7 +61,7 @@ export const BaseNode = ({
                                 onChange={handleChange(field)}
                             />
                         )}
-                        {type === "textarea" && (
+                        {type === NODEOPTIONS.TEXTAREA && (
                             <textarea
                                 ref={inputRef}
                                 value={fields[field] || ""}
@@ -73,7 +74,7 @@ export const BaseNode = ({
                                 }}
                             />
                         )}
-                        {type === "select" && (
+                        {type === NODEOPTIONS.SELECT && (
                             <select
                                 value={fields[field] || ""}
                                 onChange={handleChange(field)}

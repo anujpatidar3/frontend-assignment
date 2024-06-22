@@ -2,6 +2,7 @@
 import { BaseNode } from './components/baseNode.js';
 import { Position } from 'reactflow';
 import { useState } from 'react';
+import { NODEOPTIONS } from '../constants/nodes.js';
 
 export const OutputNode = ({ id, data }) => {
   data = {
@@ -15,8 +16,8 @@ export const OutputNode = ({ id, data }) => {
   ];
 
   const inputs = [
-    { label: 'Name: ', field: 'outputName', type: 'text' },
-    { label: 'Type: ', field: 'outputType', type: 'select', options: ['Text', 'File'] },
+    { label: 'Name: ', field: 'outputName', type: NODEOPTIONS.TEXT },
+    { label: 'Type: ', field: 'outputType', type: NODEOPTIONS.SELECT, options: ['Text', 'File'] },
   ];
   const [fields, setFields] = useState(data);
 

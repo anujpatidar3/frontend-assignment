@@ -2,6 +2,7 @@
 import { BaseNode } from './components/baseNode.js';
 import { Position } from 'reactflow';
 import { useState, useRef, useEffect } from 'react';
+import { NODEOPTIONS } from '../constants/nodes.js';
 
 export const TextNode = ({ id, data }) => {
 
@@ -15,7 +16,7 @@ export const TextNode = ({ id, data }) => {
   ];
 
   const inputs = [
-    { label: 'Text: ', field: 'text', type: 'textarea' },
+    { label: 'Text: ', field: 'text', type: NODEOPTIONS.TEXTAREA },
   ];
 
   const style = {
@@ -42,7 +43,7 @@ export const TextNode = ({ id, data }) => {
 
   useEffect(() => {
     updateNodeSize();
-  }, [fields.text]);
+  }, [fields.text, fields.text.length]);
 
   return (
     <BaseNode
