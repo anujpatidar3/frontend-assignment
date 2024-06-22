@@ -11,6 +11,11 @@ export const LLMNode = ({ id, data }) => {
   ];
   const [fields, setFields] = useState(data);
 
+  const style = {
+    backgroundColor: '#FCDC94',
+    border: '4px solid #FCDC94'
+  }
+
   const description = "This is a LLM."
   return (
     <BaseNode
@@ -20,6 +25,8 @@ export const LLMNode = ({ id, data }) => {
       handles={handles}
       fields={fields}
       setFields={setFields}
-      description={description} />
+      description={description}
+      style={style}
+    />
   );
 };

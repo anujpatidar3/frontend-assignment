@@ -20,6 +20,11 @@ export const OutputNode = ({ id, data }) => {
   ];
   const [fields, setFields] = useState(data);
 
+  const style = {
+    backgroundColor: '#C8CFA0',
+    border: '4px solid #C8CFA0'
+  }
+
   return (
     <BaseNode
       id={id}
@@ -29,6 +34,7 @@ export const OutputNode = ({ id, data }) => {
       label="Output"
       handles={handles}
       inputs={inputs}
+      style={style}
     />
   );
 };

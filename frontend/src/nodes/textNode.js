@@ -18,6 +18,11 @@ export const TextNode = ({ id, data }) => {
     { label: 'Text: ', field: 'text', type: 'text' },
   ];
 
+  const style = {
+    backgroundColor: '#78ABA8',
+    border: '4px solid #78ABA8'
+  }
+
   const [fields, setFields] = useState(data);
   console.log('fields', fields)
 
@@ -30,6 +35,7 @@ export const TextNode = ({ id, data }) => {
       setFields={setFields}
       handles={handles}
       inputs={inputs}
+      style={style}
     />
   )
 };

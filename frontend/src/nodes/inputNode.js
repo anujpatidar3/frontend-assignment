@@ -20,6 +20,11 @@ export const InputNode = ({ id, data }) => {
   ];
   const [fields, setFields] = useState(data);
 
+  const style = {
+    backgroundColor: '#EF9C66',
+    border: '4px solid #EF9C66'
+  }
+
   return (
     <BaseNode
       id={id}
@@ -28,6 +33,8 @@ export const InputNode = ({ id, data }) => {
       data={data}
       label="Input"
       handles={handles}
-      inputs={inputs} />
+      inputs={inputs}
+      style={style}
+    />
   );
 };
