@@ -15,7 +15,6 @@ async function submitData (pipelineData) {
         const result = await response.json();
         const { num_nodes, num_edges, is_dag } = result;
 
-        // Display the result in an alert
         return `Pipeline Analysis Result:
         - Number of Nodes: ${num_nodes}
         - Number of Edges: ${num_edges}

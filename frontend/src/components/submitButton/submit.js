@@ -1,42 +1,19 @@
-import { useStore } from './store';
-import submitData from './apis/submit';
-import { SnackbarComponent } from './components/snackbar';
+import { useStore } from '../../store';
+import submitData from '../../apis/submit';
+import { SnackbarComponent } from '../snackbar/snackbar';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
+import { buttonStyle, containerStyle, iconStyle } from './styles'
 
 export const SubmitButton = () => {
-    const buttonStyle = {
-        padding: "10px 20px",
-        borderRadius: "4px",
-        border: "none",
-        backgroundColor: "#658147",
-        color: "#fff",
-        fontSize: "16px",
-        cursor: "pointer",
-        transition: "background-color 0.3s ease",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-    };
-
-    const containerStyle = {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: "20px", // Adjust margin as needed
-    };
 
     const handleHover = (event) => {
-        event.target.style.backgroundColor = "#496235"; // Darker shade on hover
+        event.target.style.backgroundColor = "#496235";
     };
 
     const handleHoverOut = (event) => {
-        event.target.style.backgroundColor = "#658147"; // Original color on hover out
-    };
-
-    const iconStyle = {
-        marginLeft: "8px", // Adjust spacing between text and icon
+        event.target.style.backgroundColor = "#658147";
     };
 
     const nodes = useStore((state) => state.nodes);

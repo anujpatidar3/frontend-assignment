@@ -1,5 +1,5 @@
 // outputNode.js
-import { BaseNode } from './baseNode.js';
+import { BaseNode } from './components/baseNode.js';
 import { Position } from 'reactflow';
 import { useState } from 'react';
 

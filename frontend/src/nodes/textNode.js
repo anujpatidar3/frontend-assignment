@@ -1,7 +1,7 @@
 // textNode.js
-import { BaseNode } from './baseNode.js';
+import { BaseNode } from './components/baseNode.js';
 import { Position } from 'reactflow';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export const TextNode = ({ id, data }) => {
 
@@ -15,7 +15,7 @@ export const TextNode = ({ id, data }) => {
   ];
 
   const inputs = [
-    { label: 'Text: ', field: 'text', type: 'text' },
+    { label: 'Text: ', field: 'text', type: 'textarea' },
   ];
 
   const style = {
@@ -24,7 +24,25 @@ export const TextNode = ({ id, data }) => {
   }
 
   const [fields, setFields] = useState(data);
-  console.log('fields', fields)
+
+  const inputRef = useRef(null);
+  const maxWidth = 300;
+  const [nodeSize, setNodeSize] = useState({ width: 150, height: "auto" });
+
+  const updateNodeSize = () => {
+    const input = inputRef.current;
+    if (input) {
+      const textWidth = input.scrollWidth + 20;
+      const textHeight = input.scrollHeight + 40;
+      let newWidth = textWidth > maxWidth ? maxWidth : textWidth;
+      let newHeight = textWidth > maxWidth ? textHeight + 20 : textHeight;
+      setNodeSize({ width: newWidth, height: newHeight });
+    }
+  };
+
+  useEffect(() => {
+    updateNodeSize();
+  }, [fields.text]);
 
   return (
     <BaseNode
@@ -36,6 +54,8 @@ export const TextNode = ({ id, data }) => {
       handles={handles}
       inputs={inputs}
       style={style}
+      nodeSize={nodeSize}
+      inputRef={inputRef}
     />
   )
 };

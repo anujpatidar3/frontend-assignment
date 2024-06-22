@@ -1,34 +1,28 @@
 // src/nodes/BaseNode.js
 import { Handle } from 'reactflow';
+import { inputContainerStyle, descriptionStyle, containerStyle as baseContainerStyle, labelStyle as baseLabelStyle } from './styles.js'
 
-export const BaseNode = ({ id, fields, setFields, label, handles, inputs, description, style }) => {
+export const BaseNode = ({
+    id,
+    fields,
+    setFields,
+    label,
+    handles,
+    inputs,
+    description,
+    style,
+    nodeSize,
+    inputRef
+}) => {
 
     const containerStyle = {
-        width: 250,
-        height: "auto",
-        borderRadius: "5px",
+        ...baseContainerStyle,
         border: `${style.border}`
-    }
+    };
 
     const labelStyle = {
-        textAlign: "left",
-        padding: "10px",
-        fontSize: "1em",
-        fontWeight: 700,
-        color: "#000000",
+        ...baseLabelStyle,
         backgroundColor: `${style.backgroundColor}`
-    };
-
-    const descriptionStyle = {
-        padding: "10px",
-        marginTop: "5px",
-        fontSize: "1em",
-        color: "#333333",
-        fontWeight: 500,
-    };
-
-    const inputContainerStyle = {
-        padding: "10px",
     };
 
     const handleChange = (field) => (e) => {
@@ -61,8 +55,22 @@ export const BaseNode = ({ id, fields, setFields, label, handles, inputs, descri
                                     border: "1px solid",
                                     borderRadius: "4px",
                                 }}
+                                className='input-text'
                                 value={fields[field] || ""}
                                 onChange={handleChange(field)}
+                            />
+                        )}
+                        {type === "textarea" && (
+                            <textarea
+                                ref={inputRef}
+                                value={fields[field] || ""}
+                                onChange={handleChange(field)}
+                                className='textarea'
+                                style={{
+                                    width: "100%",
+                                    boxSizing: "border-box",
+                                    height: `${Math.max(nodeSize.height - 40, 40)}` + "px",
+                                }}
                             />
                         )}
                         {type === "select" && (
